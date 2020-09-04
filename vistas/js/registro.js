@@ -36,6 +36,9 @@ $(document).ready(function () {
         fileName: "ListadoPaises",    //Nombre del archivo 
     });
 
+
+
+
 })
 /*=============================================
 ALMACENAR EL DNI EN EL LOCALSTRORE
@@ -47,7 +50,6 @@ $("#crearFuncionarioVisita").on("click", function () {
     localStorage.setItem("dniLocalStore", dniLocalStore);
 
 })
-
 
 /*=============================================
 ELIMINAR DNI EN EL LOCALSTRORE
@@ -297,6 +299,7 @@ $("#buscarFuncionario").click(function () {
     }
 })
 
+
 /*=============================================
  CARGAR LA TABLA DINÁMICA DE REGISTRO
  =============================================*/
@@ -355,6 +358,7 @@ function cargarDatos() {
 }
 
 
+
 function actualizarActivo() {
 
     //FUNCION QUE RETORNA TODO EL LISTADO
@@ -407,8 +411,6 @@ function actualizarActivo() {
 
     }
 
-
-
     $('#search').click(function () {
 
 
@@ -446,6 +448,7 @@ function actualizarActivo() {
 
 
     });
+
 
 }
 
@@ -865,4 +868,52 @@ $(".tablasListado tbody").on("click", "button.listarFuncionario", function () {
     })
 })
 
+/*=============================================
+RANGO DE FECHAS
+=============================================*/
 
+$('#daterange-btn').daterangepicker.regional['es'] = (
+
+    {
+
+        ranges: {
+            /* 'Hoy': [moment(), moment()], */
+            'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Últimos 7 días': [moment().subtract(6, 'days'), moment()],
+            'Últimos 30 días': [moment().subtract(29, 'days'), moment()],
+            'Este mes': [moment().startOf('month'), moment().endOf('month')],
+            'Último mes': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+
+
+        },
+        startDate: moment(),
+        endDate: moment()
+    },
+    function (start, end) {
+        $('#daterange-btn span').html(start.format('D MMMM, YYYY') + ' - ' + end.format('D MMMM, YYYY'));
+
+        var fechaInicial = start.format('DD/MM/YYYY');
+
+        var fechaFinal = end.format('DD/MM/YYYY');
+
+        var capturarRango = $("#daterange-btn span").html();
+
+        localStorage.setItem("capturarRango", capturarRango);
+
+        window.location = "index.php?ruta=registro&start_date=" + fechaInicial + "&end_date=" + fechaFinal;
+
+    }
+
+)
+
+
+/*=============================================
+CANCELAR RANGO DE FECHAS
+=============================================*/
+
+$(".daterangepicker.opensleft .range_inputs .cancelBtn").on("click", function () {
+
+    localStorage.removeItem("capturarRango");
+    localStorage.clear();
+    window.location = "registro";
+})

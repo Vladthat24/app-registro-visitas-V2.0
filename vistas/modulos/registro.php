@@ -24,7 +24,7 @@
 
             <div class="box-header with-border">
                 <form class="form-inline" method="GET" action="">
-                    <div class="row">
+                    <div class="row excel">
 
                         <div class="col-md-2">
                             <label for="label">Fecha de Inicio: </label>
@@ -38,15 +38,19 @@
                         <div class="col-md-2">
                             <input type="button" name="search" id="search" value="Search" class="btn btn-info" />
                         </div>
-                        <button class="btn btn-primary" name="enviar">
-
-                            <span class="glyphicon glyphicon-search"></span>
-
-                        </button>
                     </div>
                 </form>
                 <hr>
 
+                <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+
+                    <span>
+                        <i class="fa fa-calendar"></i> Rango de fecha para Descargar Excel
+                    </span>
+
+                    <i class="fa fa-caret-down"></i>
+
+                </button>
 
                 <button class="btn btn-primary" data-toggle="modal" id="agregarFuncionario">
 
@@ -57,8 +61,8 @@
                 <?php
                 if (isset($_GET["start_date"])) {
                     
+
                     echo '<a href="vistas/modulos/descargar-reporte.php?reporte=reporte&start_date=' . $_GET["start_date"] . '&end_date=' . $_GET["end_date"] . '">';
-                
                 } else {
 
                     echo '<a href="vistas/modulos/descargar-reporte.php?reporte=reporte">';

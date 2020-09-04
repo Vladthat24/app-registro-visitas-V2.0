@@ -83,6 +83,8 @@ class ModeloRegistro
             Tap_RegistroVisita.usuario as usuario  
             FROM $tabla left join Tap_Funcionario  on 
             Tap_RegistroVisita.idfuncionario=Tap_Funcionario.id 
+            WHERE FORMAT(CONVERT(date,Tap_RegistroVisita.fecha_ingreso),'dd/MM/yyyy')
+            BETWEEN $fechaInicial AND $fechaFinal 
             ORDER BY Tap_RegistroVisita.id DESC");
 
             $stmt->execute();
@@ -147,13 +149,6 @@ class ModeloRegistro
         //CAPTURAR DATOS PARA EL EDIT EN EL FORMULARIO
         if ($item != null) {
 
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY id DESC");
-
-            $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
-
-            $stmt->execute();
-
-            return $stmt->fetch();
         } else {
 
             $stmt = Conexion::conectar()->prepare("SELECT count(*) AS CANTIDAD FROM $tabla");

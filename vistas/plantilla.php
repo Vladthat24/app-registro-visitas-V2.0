@@ -66,26 +66,7 @@
   <!-- Daterange picker -->
   <link rel="stylesheet" href="vistas/bower_components/bootstrap-daterangepicker/daterangepicker.css">
 
-
-  <link href="vistas/bower_components/exportexcel/tableexport.css" rel="stylesheet" type="text/css">
-
-
-  <script src="vistas/bower_components/exportexcel/FileSaver.min.js"></script>
-  <script src="vistas/bower_components/exportexcel/Blob.min.js"></script>
-  <script src="vistas/bower_components/exportexcel/xls.core.min.js"></script>
-  <script src="vistas/bower_components/exportexcel/tableexport.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-  <!--=====================================
+<!--=====================================
         PLUGINS DE JAVASCRIPT
         ======================================-->
 

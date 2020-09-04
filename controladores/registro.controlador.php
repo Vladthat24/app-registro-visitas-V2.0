@@ -358,15 +358,20 @@ class ControladorRegistro
       $tabla = "Tap_RegistroVisita";
 
       if (isset($_GET["start_date"]) && isset($_GET["end_date"])) {
-        var_dump($_GET["start_date"], $_GET["end_date"]);
 
-        $d1 = DateTime::createFromFormat('Y-m-d', $_POST["start_date"]);
-        $d2 = DateTime::createFromFormat('Y-m-d', $_POST["end_date"]);
 
+        /*         $d1 = DateTime::createFromFormat('Y-m-d', $_GET["start_date"]);
+        $d2 = DateTime::createFromFormat('Y-m-d', $_GET["end_date"]);
+        
+        echo "---------------";
         $fechaInicial = $d1->format('d/m/Y');
         $fechaFinal = $d2->format('d/m/Y');
+        var_dump($fechaInicial);
+        var_dump($fechaFinal); */
+        /*         echo "HOLA"; */
+        /* var_dump($_GET["start_date"], $_GET["end_date"]); */
 
-        $registro = ModeloRegistro::mdlRangoFechasRegistro($tabla, $fechaInicial, $fechaFinal);
+        $registro = ModeloRegistro::mdlRangoFechasRegistro($tabla, $_GET["start_date"], $_GET["end_date"]);
       } else {
 
         $fechaInicial = null;
