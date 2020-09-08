@@ -66,6 +66,11 @@ class ModeloRegistro
 
         } else {
             /* var_dump("ELSE"); */
+            //NOTA: CUANDO UN VARCHAR ESTA CONVERTIDO A DATE PUEDE 
+            //ACEPTAR FORMATOS COMO DD/MM/YYY O DD-MM-YYYY
+            //SIN PROBLEMAS EN EL FILTRADO, ES RECOMENDABLE 
+            //CONVERTIR UN STRING EN DATE PARA QUE SEA MAS OPTIMO EL FILTRADO
+
             $stmt = Conexion::conectar()->prepare("SELECT Tap_RegistroVisita.id as id,
             (SELECT tipo_documento FROM Tap_TipoDocumento WHERE id=Tap_Funcionario.idtipo_documento) as TipoDocF,    
             Tap_Funcionario.num_documento as num_documento,
@@ -83,8 +88,7 @@ class ModeloRegistro
             Tap_RegistroVisita.usuario as usuario  
             FROM $tabla left join Tap_Funcionario  on 
             Tap_RegistroVisita.idfuncionario=Tap_Funcionario.id 
-            WHERE FORMAT(CONVERT(date,Tap_RegistroVisita.fecha_ingreso),'dd/MM/yyyy')
-            BETWEEN $fechaInicial AND $fechaFinal 
+            WHERE CONVERT(date,fecha_ingreso) BETWEEN '$fechaInicial' AND '$fechaFinal' 
             ORDER BY Tap_RegistroVisita.id DESC");
 
             $stmt->execute();

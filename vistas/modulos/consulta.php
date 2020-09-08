@@ -88,7 +88,7 @@
 
                             if (isset($_POST['search'])) {
 
-                                if (empty($_POST["fechaI"]) || empty($_POST["fecgaFinal"])) {
+                                if (empty($_POST["fechaI"])) {
 
                                     echo '<script>
 
@@ -106,16 +106,17 @@
                                         })
                 
                                   </script>';
-                                  $fechaInicial = null;
-                                  $fechaFinal = null;
+                                    $fechaInicial = null;
+                                    $fechaFinal = null;
                                 } else {
 
                                     $d1 = DateTime::createFromFormat('Y-m-d', $_POST["fechaI"]);
                                     $d2 = DateTime::createFromFormat('Y-m-d', $_POST["fechaFinal"]);
                                     /*                              var_dump($d1->format('d/m/Y'));
                               var_dump($d2->format('d/m/Y')); */
-                                    $fechaInicial = $d1->format('d/m/Y');
-                                    $fechaFinal = $d2->format('d/m/Y');
+                                    $fechaInicial = $d1->format('d-m-Y');
+                                    $fechaFinal = $d2->format('d-m-Y');
+                                   /*  var_dump($fechaInicial, $fechaFinal); */
                                 }
                             } else {
 

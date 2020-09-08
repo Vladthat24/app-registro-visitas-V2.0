@@ -416,11 +416,12 @@ function actualizarActivo() {
 
         var start_date = $('#start_date').val();
         var end_date = $('#end_date').val();
+/*         var star = moment(start_date, 'YYYY/MM/dd');
+        var end = moment(end_date, 'YYYY/MM/dd');
+        console.log("fecha inicial", star.format('DD-MM-YYYY'));
+        console.log("fecha final", end.format('DD-MM-YYYY')); */
 
-        console.log("fecha inicial", start_date);
-        console.log("fecha final", end_date);
-
-
+    
         if (start_date != '' && end_date != '') {
 
             $('.tablaRegistro').DataTable().destroy();
@@ -872,17 +873,17 @@ $(".tablasListado tbody").on("click", "button.listarFuncionario", function () {
 RANGO DE FECHAS
 =============================================*/
 
-$('#daterange-btn').daterangepicker.regional['es'] = (
+$('#daterange-btn').daterangepicker(
 
     {
 
         ranges: {
-            /* 'Hoy': [moment(), moment()], */
+            'Hoy': [moment(), moment()],
             'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
             'Últimos 7 días': [moment().subtract(6, 'days'), moment()],
             'Últimos 30 días': [moment().subtract(29, 'days'), moment()],
             'Este mes': [moment().startOf('month'), moment().endOf('month')],
-            'Último mes': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'Último mes': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
 
 
         },

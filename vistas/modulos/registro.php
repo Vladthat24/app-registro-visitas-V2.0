@@ -35,7 +35,7 @@
                             <input type="date" name="end_date" id="end_date" class="form-control" />
                         </div>
 
-                        <div class="col-md-2">
+                        <div class="col-md-2" style="padding: 5px;">
                             <input type="button" name="search" id="search" value="Search" class="btn btn-info" />
                         </div>
                     </div>
