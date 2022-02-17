@@ -26,7 +26,7 @@ class Conexion
 
 /* CONEXION CON LA BASE DE DATOS LOCAL - SQL SERVER*/
 
-		$link = new PDO('sqlsrv:Server=ETF_DESARROLLO;Database=dirislim_visita', 'sa', '1597531994');
+		$link = new PDO('sqlsrv:Server=SERV-APP-DIRISL;Database=dirislim_visita', 'sa', 'D3s4rr0ll0');
 		$link->exec("set names utf8");
 
 		return $link;
