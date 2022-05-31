@@ -9,9 +9,9 @@ class Conexion
 		/* CONEXION CON EL HOSTING DIRIS LIMA SUR - MYSQL */
 
 /*  		$link = new PDO(
-			"mysql:host=localhost;dbname=dirislim_monitoreocovid19",
-			"dirislim_7rhm9W9W",
-			"VEDADWddlTECaEXj"
+			"mysql:host=localhost;dbname=NOMBREDB",
+			"USUARIO",
+			"CONTRASEÑA"
 		);
 		$link->exec("set names utf8");  */
 
@@ -19,14 +19,14 @@ class Conexion
 /* CONEXION CON LA BASE DE DATOS LOCAL - MYSQL */
 
 /* 		$link = new PDO(
-			"mysql:host=localhost;dbname=dirislim_monitoreocovid19",
+			"mysql:host=localhost;dbname=NOMBREDB",
 			"root",
 			"");
 		$link->exec("set names utf8"); */
 
 /* CONEXION CON LA BASE DE DATOS LOCAL - SQL SERVER*/
 
-		$link = new PDO('sqlsrv:Server=SERV-APP-DIRISL;Database=dirislim_visita', 'sa', 'D3s4rr0ll0');
+		$link = new PDO('sqlsrv:Server=NAMESERVER;Database=NOMBREDB', 'USUARIO', 'PASSWORD');
 		$link->exec("set names utf8");
 
 		return $link;
